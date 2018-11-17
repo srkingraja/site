@@ -6,6 +6,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
+    const brmTopic = path.resolve('./src/templates/brm-topic.js')
     resolve(
       graphql(
         `
@@ -31,6 +32,39 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           createPage({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
+            context: {
+              slug: post.node.slug
+            },
+          })
+        })
+      })
+    )
+
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulBrmTopic {
+              edges {
+                node {
+                  title
+                  slug
+                }
+              }
+            }
+          }
+          `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
+        }
+
+        const topics = result.data.allContentfulBrmTopic.edges
+        topics.forEach((post, index) => {
+          createPage({
+            path: `/brm/${post.node.slug}/`,
+            component: brmTopic,
             context: {
               slug: post.node.slug
             },
