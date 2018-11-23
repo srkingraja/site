@@ -6,6 +6,9 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+- group: Contentful 
+
 steps:
 - task: NodeTool@0
   inputs:
