@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Avenir', Tahoma, Arial, Helvetica, sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
   font-size: 1em;
   line-height: 1.65;
   color: #373f49;
@@ -29,6 +29,7 @@ h3 {
 
 a {
   color: currentColor;
+  text-decoration: none;
 }
 
 .wrapper {
