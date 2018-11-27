@@ -2,12 +2,12 @@ import React from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Hero from '../components/hero'
-import ArticlePreview from '../components/article-preview'
+import HomeTopicPreview from '../components/hometopic-preview'
 
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const posts = get(this, 'props.data.allContentfulHomeTopic.edges')
     const [author] = get(this, 'props.data.allContentfulPerson.edges')
 
     return (
@@ -20,7 +20,7 @@ class RootIndex extends React.Component {
             {posts.map(({ node }) => {
               return (
                 <li key={node.slug}>
-                  <ArticlePreview article={node} />
+                  <HomeTopicPreview article={node} />
                 </li>
               )
             })}
@@ -35,7 +35,7 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentfulHomeTopic(sort: { fields: [publishDate], order: ASC }) {
       edges {
         node {
           title

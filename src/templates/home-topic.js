@@ -5,9 +5,9 @@ import Img from 'gatsby-image'
 
 import heroStyles from '../components/hero.module.css'
 
-class BrmTopicTemplate extends React.Component {
+class HomeTopicTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBrmTopic')
+    const post = get(this.props, 'data.contentfulHomeTopic')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
@@ -29,11 +29,11 @@ class BrmTopicTemplate extends React.Component {
   }
 }
 
-export default BrmTopicTemplate
+export default HomeTopicTemplate
 
 export const pageQuery = graphql`
-  query BrmTopicBySlug($slug: String!) {
-    contentfulBrmTopic(slug: { eq: $slug }) {
+  query HomeTopicBySlug($slug: String!) {
+    contentfulHomeTopic(slug: { eq: $slug }) {
       title
       publishDate(formatString: "MMMM Do, YYYY")
       heroImage {
