@@ -17,7 +17,7 @@ class BrmIndex extends React.Component {
           BRM
         </div>
         <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
+          <h2 className="section-headline">Topics</h2>
           <ul className="article-list">
             {posts.map(({ node }) => {
               return (
